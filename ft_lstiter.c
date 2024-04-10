@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:59:44 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/17 19:01:43 by hle-roi          ###   ########.fr       */
+/*   Created: 2023/10/17 18:57:33 by hle-roi           #+#    #+#             */
+/*   Updated: 2023/10/17 18:57:41 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_lstiter(t_list *lst, void (*f)(void	*))
 {
-	char	*str;
-	int		i;
+	t_list	*tmp;
 
-	if (!s || !f)
+	if (lst == NULL || f == NULL)
 		return ;
-	str = malloc(ft_strlen(s) + 1 * sizeof(char));
-	if (!str)
-		return ;
-	i = 0;
-	while (i < ft_strlen(s))
+	tmp = lst;
+	while (tmp)
 	{
-		f(i, &s[i]);
-		str[i] = s[i];
-		i++;
+		f(tmp->content);
+		tmp = tmp->next;
 	}
-	str[i] = 0;
-	return ;
 }

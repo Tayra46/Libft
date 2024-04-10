@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:59:44 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/17 19:01:43 by hle-roi          ###   ########.fr       */
+/*   Created: 2023/10/17 17:12:33 by hle-roi           #+#    #+#             */
+/*   Updated: 2023/10/17 17:13:28 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_memcmp(const void *s1, const void *s2, size_t len)
 {
-	char	*str;
-	int		i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-	if (!s || !f)
-		return ;
-	str = malloc(ft_strlen(s) + 1 * sizeof(char));
-	if (!str)
-		return ;
-	i = 0;
-	while (i < ft_strlen(s))
-	{
-		f(i, &s[i]);
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = 0;
-	return ;
+	if (len == 0)
+		return (0);
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = -1;
+	while (++i < len)
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+	return (0);
 }

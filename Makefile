@@ -31,10 +31,23 @@ SRC = ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_toupper.c \
+		ft_memcmp.c \
 
-OBJS = $(SRC:c=o)
+BONUS = ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c \
 
-INCLUDES = -I ./libft.h
+BONUS_OBJS = $(BONUS:.c=.o)
+
+OBJS = $(SRC:.c=.o)
+
+INCLUDES = -I libft.h
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -42,18 +55,26 @@ CC = gcc
 
 NAME = libft.a
 
-all : $(OBJS)
-	ar -rcs $(NAME) $(OBJS) 
+all : $(NAME)
+
+bonus : $(OBJS) $(BONUS_OBJS)
+	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+$(NAME) : $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 $(OBJS) :
-	$(CC) $(CFLAGS) -c $(INCLUDES) $(@:.o=.c) -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $(@:.o=.c) -o $@
 
+$(BONUS_OBJS) :
+	$(CC) $(CFLAGS) $(INCLUDES) -c $(@:.o=.c) -o $@
+	
 clean :
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

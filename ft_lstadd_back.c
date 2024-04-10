@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:59:44 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/17 19:01:43 by hle-roi          ###   ########.fr       */
+/*   Created: 2023/10/17 18:53:54 by hle-roi           #+#    #+#             */
+/*   Updated: 2023/10/17 18:54:08 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_lstadd_back(t_list **lst, t_list *nw)
 {
-	char	*str;
-	int		i;
+	t_list	*tmp;
 
-	if (!s || !f)
+	if (lst == NULL || nw == NULL)
 		return ;
-	str = malloc(ft_strlen(s) + 1 * sizeof(char));
-	if (!str)
-		return ;
-	i = 0;
-	while (i < ft_strlen(s))
+	if (*lst == NULL)
 	{
-		f(i, &s[i]);
-		str[i] = s[i];
-		i++;
+		*lst = nw;
+		return ;
 	}
-	str[i] = 0;
-	return ;
+	tmp = *lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = nw;
 }

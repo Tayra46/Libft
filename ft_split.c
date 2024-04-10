@@ -6,85 +6,87 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:34:08 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/16 13:11:09 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/17 17:50:18 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_is_sep(char *sep, char c)
-{
-	int	i;
-
-	i = 0;
-	while (sep[i] != '\0')
-	{
-		if (sep[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	*ft_strcpy(char *str)
+static int	ft_count_words(char const *s, char c)
 {
 	int		i;
-	char	*cpy;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	cpy = malloc((i + 1) * sizeof(int));
-	i = 0;
-	while (str[i] != '\0')
-	{
-		cpy[i] = str[i];
-		i++;
-	}
-	cpy[i] = '\0';
-	return (cpy);
-}
-
-void	ft_modif(int *ijkl, char **array, char *str, char *charset)
-{
 	int		count;
-	char	*s;
 
+	i = 0;
 	count = 0;
-	while (str[ijkl[0]])
+	if (s[i] && s[i] != c)
+		count++;
+	while (s[i])
 	{
-		while (ft_is_sep(charset, str[ijkl[0]]) != 1 && str[ijkl[0]])
-		{
-			ijkl[0]++;
+		if (s[i] == c && s[i + 1] && s[i + 1] != c)
 			count++;
-		}
-		ijkl[2] = 0;
-		s = malloc((ft_strlen(str) + 1) * sizeof(char));
-		while (count > 0)
-		{
-			s[ijkl[2]++] = str[ijkl[1]++];
-			count--;
-		}
-		s[ijkl[2]] = '\0';
-		while (ft_is_sep(charset, str[ijkl[0]]) == 1)
-			ijkl[0]++;
-		if (ft_strcpy(s)[0] != '\0')
-			array[ijkl[3]++] = ft_strcpy(s);
-		ijkl[1] = ijkl[0];
+		i++;
 	}
+	return (count);
 }
 
-char	**ft_split(char *str, char *charset)
+static int	ft_word_len(char const *s, char c)
 {
-	int		ijkl[4];
-	char	**array;
+	int		i;
 
-	ijkl[0] = 0;
-	ijkl[1] = 0;
-	ijkl[2] = 0;
-	ijkl[3] = 0;
-	array = malloc((ft_strlen(str) + 1) * sizeof(char *));
-	ft_modif(ijkl, array, str, charset);
-	array[ijkl[3]] = 0;
-	return (array);
+	i = 0;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
+}
+
+static char	**ft_free(char **tab, int i)
+{
+	while (i >= 0)
+	{
+		free(tab[i]);
+		i--;
+	}
+	free(tab);
+	return (NULL);
+}
+
+static char	**test_pointeur(const char *s, char **tab, char c, int *i)
+{
+	*i = 0;
+	if (!s)
+		return (NULL);
+	tab = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!tab)
+		return (NULL);
+	return (tab);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+	int		i;
+	int		j;
+
+	tab = NULL;
+	tab = test_pointeur(s, tab, c, &i);
+	if (!tab)
+		return (NULL);
+	while (*s)
+	{
+		if (*s != c)
+		{
+			tab[i] = malloc((ft_word_len(s, c) + 1) * sizeof(char));
+			if (!tab[i])
+				return (ft_free(tab, i));
+			j = 0;
+			while (*s && *s != c)
+				tab[i][j++] = *s++;
+			tab[i++][j] = '\0';
+		}
+		else
+			s++;
+	}
+	tab[i] = NULL;
+	return (tab);
 }

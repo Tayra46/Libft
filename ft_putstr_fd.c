@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:44:02 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/16 12:45:49 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/17 19:03:55 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
+	if (!s || !fd)
+		return ;
 	i = -1;
 	while (s[++i])
 		ft_putchar_fd(s[i], fd);

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:59:44 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/17 19:01:43 by hle-roi          ###   ########.fr       */
+/*   Created: 2023/10/17 18:55:48 by hle-roi           #+#    #+#             */
+/*   Updated: 2023/10/17 18:56:58 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_lstclear(t_list **lst, void (*del)(void	*))
 {
-	char	*str;
-	int		i;
+	t_list	*tmp;
+	t_list	*next;
 
-	if (!s || !f)
+	if (lst == NULL || del == NULL)
 		return ;
-	str = malloc(ft_strlen(s) + 1 * sizeof(char));
-	if (!str)
-		return ;
-	i = 0;
-	while (i < ft_strlen(s))
+	tmp = *lst;
+	while (tmp)
 	{
-		f(i, &s[i]);
-		str[i] = s[i];
-		i++;
+		next = tmp->next;
+		del(tmp->content);
+		free(tmp);
+		tmp = next;
 	}
-	str[i] = 0;
-	return ;
+	*lst = NULL;
 }

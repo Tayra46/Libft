@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 12:59:44 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/17 19:01:43 by hle-roi          ###   ########.fr       */
+/*   Created: 2023/10/17 18:58:05 by hle-roi           #+#    #+#             */
+/*   Updated: 2023/10/17 18:58:18 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+t_list	*ft_lstmap(t_list *lst, void	*(*f)(void *), void (*del)(void *))
 {
-	char	*str;
-	int		i;
+	t_list	*new;
+	t_list	*tmp;
 
-	if (!s || !f)
-		return ;
-	str = malloc(ft_strlen(s) + 1 * sizeof(char));
-	if (!str)
-		return ;
-	i = 0;
-	while (i < ft_strlen(s))
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	new = NULL;
+	while (lst)
 	{
-		f(i, &s[i]);
-		str[i] = s[i];
-		i++;
+		tmp = ft_lstnew(f(lst->content));
+		if (tmp == NULL)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new, tmp);
+		lst = lst->next;
 	}
-	str[i] = 0;
-	return ;
+	return (new);
 }
