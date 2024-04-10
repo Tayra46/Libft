@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 13:14:48 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/19 14:33:37 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/19 15:38:58 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ char	*ft_strrchr(const char *s, int c)
 	tmp = -1;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == (unsigned char)c)
 			tmp = i;
 		i++;
 	}
-	if (c == '\0')
-		return ((char *)s + i);
+	if ((unsigned char)c == '\0')
+		return (((char *)s + i));
 	if (tmp != -1)
-		return ((char *)s + tmp);
+		return (((char *)s + tmp));
 	return (NULL);
 }

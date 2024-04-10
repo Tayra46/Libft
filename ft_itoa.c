@@ -6,76 +6,60 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:46:17 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/17 17:51:57 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/19 16:05:03 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count(unsigned int c)
+static char	*ft_char(char *s, unsigned int number, long int len)
 {
-	static int	count = 0;
-
-	while (c > 0)
+	while (number > 0)
 	{
-		count++;
-		c = c / 10;
-	}
-	return (count);
-}
-
-static char	*ft_rev(char *s, int min)
-{
-	int		i;
-	int		a;
-	char	temp;
-
-	if (min == 1)
-	{
-		i = 1;
-		a = ft_strlen(s) - 1;
-	}
-	else
-	{
-		i = 0;
-		a = ft_strlen(s) - 1;
-	}
-	while (i < a)
-	{
-		temp = s[i];
-		s[i] = s[a];
-		s[a] = temp;
-		i++;
-		a--;
+		s[len--] = 48 + (number % 10);
+		number = number / 10;
 	}
 	return (s);
 }
 
+static long int	ft_len(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
+	{
+		len++;
+		n = n / 10;
+	}
+	return (len);
+}
+
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		count;
-	int		min;
+	char				*s;
+	long int			len;
+	unsigned int		number;
+	int					sign;
 
-	min = 0;
+	sign = 1;
+	len = ft_len(n);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(s))
+		return (NULL);
+	s[len--] = '\0';
+	if (n == 0)
+		s[0] = '0';
 	if (n < 0)
 	{
-		n *= -1;
-		min++;
+		sign *= -1;
+		number = n * -1;
+		s[0] = '-';
 	}
-	str = malloc(ft_count(n) + 2 * sizeof(char));
-	if (!str)
-		return (NULL);
-	count = 0;
-	if (min == 1)
-		str[count++] = '-';
-	if (n == 0)
-		str[count++] = '0';
-	while ((unsigned int)n > 0)
-	{
-		str[count++] = ((unsigned int)n % 10) + 48;
-		n = (unsigned int)n / 10;
-	}
-	str[count] = 0;
-	return (ft_rev(str, min));
+	else
+		number = n;
+	s = ft_char(s, number, len);
+	return (s);
 }

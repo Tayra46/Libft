@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:57:29 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/19 14:30:11 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/19 15:31:25 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (0);
+	if (!s[0] || len == 0 || start > (unsigned int)ft_strlen(s))
+		return (ft_strdup(""));
 	slen = ft_strlen(s);
 	finish = 0;
 	if (start < slen)
