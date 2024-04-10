@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:01:40 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/12 13:10:34 by hle-roi          ###   ########.fr       */
+/*   Created: 2023/10/16 11:24:12 by hle-roi           #+#    #+#             */
+/*   Updated: 2023/10/16 19:21:03 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (97 <= c && c <= 122)
-		return (c - 32);
-	else
-		return (c);
+	void			*p;
+	unsigned char	*pp;
+
+	p = malloc(count * size);
+	if (!p)
+		return (NULL);
+	pp = (unsigned char *)p;
+	while (count --)
+		pp[count] = 0;
+	return (p);
 }
-
-
-
-
-
-
-
-

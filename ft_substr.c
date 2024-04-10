@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 13:01:40 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/12 13:10:34 by hle-roi          ###   ########.fr       */
+/*   Created: 2023/10/16 11:57:29 by hle-roi           #+#    #+#             */
+/*   Updated: 2023/10/16 12:03:19 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (97 <= c && c <= 122)
-		return (c - 32);
-	else
-		return (c);
+	char	*sub;
+
+	sub = malloc(len * sizeof(char));
+	if (!sub)
+		return (NULL);
+	while (start <= len && s[start])
+	{
+		sub[start] = s[start];
+		start++;
+	}
+	return (sub);
 }
-
-
-
-
-
-
-
-
