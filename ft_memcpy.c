@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:19:26 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/16 19:28:05 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/17 12:13:04 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
+	char	*pdst;
+	char	*psrc;
 
-	i = 0;
-	while (i < n && ((unsigned char *)src)[i])
-	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
+	if (dst == src || n == 0)
+		return (dst);
+	pdst = (char *)dst;
+	psrc = (char *)src;
+	while (--n)
+		*(pdst)++ = *(psrc)++;
+	*pdst = *psrc;
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 10:50:20 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/16 19:24:40 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/16 19:35:59 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	count;
 
-	if (dstsize < ft_strlen(src))
+	if (dstsize < (size_t)ft_strlen(src))
 		return (0);
 	if (dstsize == 0)
 		return (0);
