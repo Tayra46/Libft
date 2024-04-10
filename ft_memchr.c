@@ -6,21 +6,24 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:53:42 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/17 12:01:59 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/19 13:53:01 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static unsigned char	*mem_strchr(unsigned char *s, unsigned char c)
+static unsigned char	*mem_strchr(unsigned char *s, int c)
 {
-	while (*s)
+	int	i;
+
+	i = 0;
+	while (s[i] != (unsigned char)c)
 	{
-		if (*s == c)
-			break ;
-		s++;
+		if (s[i] == '\0')
+			return (NULL);
+		i++;
 	}
-	return ((unsigned char *)s);
+	return (&s[i]);
 }
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -30,8 +33,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	str = (unsigned char *)s;
 	rep = mem_strchr(str, c);
-	if ((size_t)(rep - str) >= n || rep == NULL)
+	if ((size_t)(rep - str) >= n)
 		return (NULL);
 	else
-		return (rep);
+		return ((void *)rep);
 }
