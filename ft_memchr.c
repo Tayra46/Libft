@@ -3,23 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:08:32 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/12 14:44:03 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/14 13:18:53 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static unsigned char	*mem_strchr(const unsigned char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == c)
+			break ;
+		s++;
+	}
+	return ((unsigned char *)s);
+}
+
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char		*rep;
-	const char	*str;
+	unsigned char		*rep;
+	const unsigned char	*str;
 
-	str = (const char *)s;
-	rep = ft_strchr(str, c);
-	if (rep - str >= n || rep == NULL)
+	str = (const unsigned char *)s;
+	rep = mem_strchr(str, c);
+	if ((size_t)(rep - str) >= n || rep == NULL)
 		return (NULL);
 	else
 		return (rep);
