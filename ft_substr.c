@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:57:29 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/19 14:14:31 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/19 14:30:11 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,21 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*sub;
-	size_t	i;
+	char	*new;
+	size_t	slen;
+	size_t	finish;
 
 	if (!s)
-		return (NULL);
-	if ((unsigned int)ft_strlen(s) < start || !len)
-	{
-		sub = malloc(sizeof(char));
-		if (!sub)
-			return (NULL);
-		sub[0] = '\0';
-		return (sub);
-	}
-	sub = malloc(((unsigned long long)len + 1) * sizeof(char));
-	if (!sub)
-		return (NULL);
-	i = 0;
-	while (i < len && s[start + i])
-	{
-		sub[i] = s[start + i];
-		i++;
-	}
-	sub[i] = '\0';
-	return (sub);
+		return (0);
+	slen = ft_strlen(s);
+	finish = 0;
+	if (start < slen)
+		finish = slen - start;
+	if (finish > len)
+		finish = len;
+	new = malloc(sizeof(char) * (finish + 1));
+	if (!new)
+		return (0);
+	ft_strlcpy(new, s + start, finish + 1);
+	return (new);
 }
