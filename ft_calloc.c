@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:24:12 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/23 10:14:56 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/23 10:27:04 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
 
+	if (!count || !size)
+		return (malloc(0));
+	if ((count * size) / count != size)
+		return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (NULL);
