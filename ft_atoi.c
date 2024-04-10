@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:45:13 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/19 15:14:45 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/20 11:02:04 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_atoi(const char *str)
 		prev = nb;
 		nb = nb * 10 + (str[i++] - '0');
 		if (prev > nb)
-			return (1 * (neg == -1));
+			return (-1 * (neg == -1));
 	}
 	return (nb * neg);
 }
