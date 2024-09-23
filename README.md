@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://github.com/ayogun/42-project-badges/blob/a48e677fd4871e6999a9564101dca26091ec18ef/badges/libfte.png">
   <h1>Libft</h1> 
-  <p>My first library which contain useful functions I will use in future projects</p>
+  <p><strong>My first library which contain useful functions I will use in future projects</strong></p>
   </br>
 </div>
 
