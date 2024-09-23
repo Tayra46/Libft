@@ -1,4 +1,4 @@
-<center> <font size="10">Libft</font> </center>
+<center> <h3 size="10">Libft</h3> </center>
 <p align="center">My first library which contain useful functions I will use in future projects</p>
 
 ## Introduction
