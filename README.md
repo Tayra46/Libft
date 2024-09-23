@@ -1,5 +1,5 @@
-<h1 align="center">Libft</h1>
-My first library which contain useful functions I will use in future projects
+<h3 align="center">Libft</h3>
+<p align="center">My first library which contain useful functions I will use in future projects</p>
 
 ## Introduction
 C programming can be very tedious when one doesn’t have access to the highly useful
