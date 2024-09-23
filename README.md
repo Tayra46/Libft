@@ -10,17 +10,21 @@
 <details open>
   <summary>Table of Contents</summary>
   
-  1. [Introduction](#introduction)
+  1. [About](#about)
   1. [Bonus](#bonus)
 
 </details>
 
-<a id="introduction"></a>
+<a id="about"></a>
   
-## Introduction
+## About
 C programming can be very tedious when one doesn’t have access to the highly useful
 standard functions. This project is about understanding the way these functions work,
 implementing and learning to use them.
+
+<details open>
+  <summary>Hide</summary>
+  
 | Function | Description |
 |--|--|
 | ft_atoi | Convert the `string` passed in arguments to it's `integer` representation
@@ -58,6 +62,7 @@ implementing and learning to use them.
 | ft_tolower | Convert each character of the string to lowercase
 | ft_toupper | Convert each character of the string to uppercase
 
+</details>
 <a id="bonus"></a>
 
 ## Bonus
