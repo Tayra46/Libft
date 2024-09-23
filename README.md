@@ -83,15 +83,33 @@ typedef struct s_list
 <a id="usage"></a>
 
 ## Usage
-
 <a id="requirements"></a>
-
 ### Requirements
-
+The library is written in C language and require `GCC` to compile as well as `Make`
 <a id="instructions"></a>
-
 ### Instructions
-
+Clone this repository with :
+```bash
+git clone https://github.com/Tayra46/Libft.git Libft
+```
+Go into your repositroy clone and make :
+```bash
+cd Libft
+make
+#for bonus
+make bonus
+```
+This will generate the libft.a static library
 <a id="use"></a>
-
 ### Use
+To use the libft functions in your project, include the libft.h header file in your source code and link against the libft.a library during compilation.
+
+Example:
+```c
+#include "libft.h"
+
+int main() {
+    ft_putstr_fd("Hello, Libft!\n", 1);
+    return 0;
+}
+```
