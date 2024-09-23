@@ -72,7 +72,7 @@ implementing and learning to use them.
 | ft_tolower | Convert each character of the string to lowercase
 | ft_toupper | Convert each character of the string to uppercase
 
-## Bonuses
+## Bonus
 The bonus par introduce functions that are made to handle lists.
 Lists are structures defined this way :
 
