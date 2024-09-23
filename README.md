@@ -10,8 +10,12 @@
 <details open>
   <summary>Table of Contents</summary>
   
-  1. [About](#about)
-  1. [Bonus](#bonus)
+  1. [About](#about)\
+    1. [Bonus](#bonus)
+  1. [Usage](#usage)\
+    1. [Requirements](#requirements)\
+    2. [Instructions](#instructions)\
+    3. [Use](#use)
 
 </details>
 
@@ -65,7 +69,7 @@ implementing and learning to use them.
 </details>
 <a id="bonus"></a>
 
-## Bonus
+### Bonus
 The bonus par introduce functions that are made to handle lists.
 Lists are structures defined this way :
 
@@ -76,4 +80,18 @@ typedef struct s_list
   struct s_list  *next;
 }  t_list
 ```
+<a id="usage"></a>
 
+## Usage
+
+<a id="requirements"></a>
+
+### Requirements
+
+<a id="instructions"></a>
+
+### Instructions
+
+<a id="use"></a>
+
+### Use
