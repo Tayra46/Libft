@@ -1,5 +1,35 @@
-<center> <h3 size="10">Libft</h3> </center>
-<p align="center">My first library which contain useful functions I will use in future projects</p>
+<div align="center">
+  <h1>Libft</h1> 
+  <p>My first library which contain useful functions I will use in future projects</p>
+  </br>
+</div>
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
 ## Introduction
 C programming can be very tedious when one doesn’t have access to the highly useful
@@ -28,5 +58,29 @@ implementing and learning to use them.
 | ft_split | Split the string `s` according to the separator character `c`
 | ft_strchr | Look for a specific character inside of the string `s`
 | ft_strdup | Duplicate the string `s`
+| ft_striteri | Applies the function `f` on each character of the `string` passed as argument
+| ft_strjoin | Return the result of the concatenation of the two `string` passed as argument
+| ft_strlcat | Append the `size` first bytes of string `src` to the end of the string `dst`
+| ft_strlcpy | Copy the `size` first bytes of string `src` to the end of the string `dst`
+| ft_strlen | Return the size of the `string` passed as argument
+| ft_strmapi | Create new string from modifying string with specified function
+| ft_strncmp | Compare the first n bytes of a string
+| ft_strnstr | Locate a substring in a string
+| ft_strrchr | Locate the last occurence of a `character` in a `string`
+| ft_strtrim | Trim beginning and end of string with the specified characters
+| ft_substr | Extract substring from string
+| ft_tolower | Convert each character of the string to lowercase
+| ft_toupper | Convert each character of the string to uppercase
 
+## Bonuses
+The bonus par introduce functions that are made to handle lists.
+Lists are structures defined this way :
+
+```c
+typedef struct s_list
+{
+void *content;
+struct s_list *next;
+} t_list
+```
 
