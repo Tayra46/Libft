@@ -80,6 +80,22 @@ typedef struct s_list
   struct s_list  *next;
 }  t_list
 ```
+<details open>
+  <summary>Hide</summary>
+  
+| Function | Description |
+|--|--|
+| ft_lstadd_back | Add the list node passed as argument to the back of hte list
+| ft_lstadd_front | Add the list node passed as argument to the front of hte list
+| ft_lstclear | Free the list node passed as argument and his content
+| ft_lstdelone | Free the memory of the node’s content using the function `del` given as a parameter and free the node
+| ft_lstiter | Iterates the list `lst` and applies the function `f` on the content of each node
+| ft_lstlast | Returns the last node of the list
+| ft_lstmap | Iterates the list `lst` and applies the function `f` on the content of each node. Return a copy of the list
+| ft_lstnew | Create a new list node
+| ft_lstsize | Return the lenght of the list
+
+</details>
 <a id="usage"></a>
 
 ## Usage
